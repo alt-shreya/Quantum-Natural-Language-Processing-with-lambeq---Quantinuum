@@ -9,3 +9,4 @@ Womanium Quantum Hackathon 2022
 - Email ID: shreyakumar31@gmail.com
 
 # How to Run this Demo
+- run code.py or code.ipynb
