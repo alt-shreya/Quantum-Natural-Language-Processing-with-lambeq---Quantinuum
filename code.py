@@ -114,11 +114,6 @@ equation(original_diagram, removed_cups_diagram, symbol='-->', figsize=(9, 6), a
 
 # TASK 5: DEFINE LEARNING OBJECTIVE 
 
-'''establish a comparison score that measures the similarity of two sentences. 
-Take the numeric output of the two sentence circuits you want to compare, and define an output layer, that returns a binary score.
-To facilitate the training process you should have a look at the Models that lambeq provides in the training module. 
-Modify the default forward pass such that the model performs a sentence comparison.'''
-
 # Parametrise the circuit
 all_circuits = train_circuits + val_circuits + test_circuits
 model = NumpyModel.from_diagrams(all_circuits, use_jit=True)
@@ -152,8 +147,6 @@ val_dataset = Dataset(val_circuits, val_labels, shuffle=False)
 
 # Training the circuit
 trainer.fit(train_dataset, val_dataset, logging_step=12)
-
-
 # Display results
 
 import matplotlib.pyplot as plt
