@@ -174,7 +174,6 @@ sentence_index = random.sample(range(0, 30),2)
 x=sentence_index[0]
 y=sentence_index[1]
  
-
 # comparison with two different sentences chosen at random from the test dataset
 print('sentence 1:' + test_data[x] + '\n' + 'sentence 2:' + test_data[y])
 if test_labels[x]==test_labels[y]:
@@ -202,3 +201,34 @@ def take_example_sentence(model):
     return prediction
 
 take_example_sentence(model)
+
+# Optimisation diagrams
+
+from numpy import arange
+from numpy.random import seed
+from numpy.random import rand
+from matplotlib import pyplot
+ 
+# objective function
+# trainer 
+# define range for input
+r_min, r_max = -5.0, 5.0
+# sample input range uniformly at 0.1 increments
+inputs = arange(r_min, r_max, 0.1)
+# compute targets
+results = trainer(train_labels)
+# simulate a sample made by an optimization algorithm
+seed(1)
+sample = r_min + rand(10) * (r_max - r_min)
+# evaluate the sample
+sample_eval = trainer(sample)
+# create a line plot of input vs result
+pyplot.plot(train_labels, results)
+# define the known function optima
+optima_x = 0.0
+# draw a vertical line at the optimal input
+pyplot.axvline(x=optima_x, ls='--', color='red')
+# plot the sample as black circles
+pyplot.plot(sample, sample_eval, 'o', color='black')
+# show the plot
+pyplot.show()
