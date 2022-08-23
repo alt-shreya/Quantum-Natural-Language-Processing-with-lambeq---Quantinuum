@@ -175,24 +175,20 @@ ax_br.plot(trainer.val_results['acc'], color=next(colours))
 test_acc = acc(model(test_circuits), test_labels)
 print('Test accuracy:', test_acc)
 
+# choosing two sentences at random
+import random
+sentence_index = random.sample(range(0, 30),2)
+x=sentence_index[0]
+y=sentence_index[1]
 
-'''Each pair of sentences are either both about the same topic (i.e. both about food, or both about IT), in which case the label is 1, 
-or are about different topics (i.e. one sentence is about food, the other is about IT), in which case the label is 0. 
-Train the model to distinguish between these two cases, e.g. make a model that takes in a pair of sentences and outputs 1 
-if they are about the same thing, and 0 otherwise. '''
+# comparison with two different sentences chosen at random from the test dataset
+print('sentence 1:' + test_data[x] + '\n' + 'sentence 2:' + test_data[y])
+if test_labels[x]==test_labels[y]:
+    
+    print('\n they belong to the same category')
+else:
+    print('\n they belong to different categories')
 
+# display diagrams
+equation(remove_cups(test_diagrams[x]), remove_cups(test_diagrams[y]), symbol='&', figsize=(9, 6), asymmetry=0.3, fontsize=12)
 
-def predict_class(model, sentence):
-  sentence = np.array([sentence])
-  sentence = sentence.reshape((1, sentence.shape[-1],
-                              sentence.shape[0]))
-  prediction = model.forward(test_circuits)
-  return prediction
-
-def take_example_sentence(model):
-    example_sentence = "I love to eat croissants."
-    prediction = predict_class(model, example_sentence)
-    print(prediction)
-    return prediction
-  
-take_example_sentence(model)
