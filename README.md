@@ -13,6 +13,8 @@ Womanium Quantum Hackathon 2022
 
 ## Code Report
 - choice of parameters
+  - Ansatz used to map diagrams onto circuits: IQPAnsatz
+  - model used to perform classification function: NumPyModel
   - loss function: binary crossentropy loss, as there were two primary classes, namely, IT and Food
   - accuracy function accounts for double counting
   - a separate function to predict the outcome of comparison between two sentences.
